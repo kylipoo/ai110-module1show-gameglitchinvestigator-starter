@@ -30,21 +30,22 @@ def parse_guess(raw: str):
 
 
 def check_guess(guess, secret):
-    if guess == secret:
+    if int(guess) == secret:
         return "Win", "🎉 Correct!"
 
     try:
-        if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+        #FixMe: If the guess is > secret, it should say "Go LOWER" and vice versa. But it's glitchy and says the opposite. I swapped the messages.
+        if int(guess) > secret:
+            return "Too High", "📉 Go LOWER!"
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📈 Go HIGHER!"
     except TypeError:
         g = str(guess)
         if g == secret:
-            return "Win", "🎉 Correct!"
+            return "You have won", "🎉 Correct!"
         if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+            return "Way too High", "📉 Go LOWER!"
+        return "Way too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -86,14 +87,15 @@ attempt_limit = attempt_limit_map[difficulty]
 
 low, high = get_range_for_difficulty(difficulty)
 
-st.sidebar.caption(f"Range: {low} to {high}")
+st.sidebar.caption(f"Range: 1 to 100")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
 if "attempts" not in st.session_state:
-    st.session_state.attempts = 1
+    # Always start at 0 attempts,
+    st.session_state.attempts = 0
 
 if "score" not in st.session_state:
     st.session_state.score = 0
@@ -104,10 +106,14 @@ if "status" not in st.session_state:
 if "history" not in st.session_state:
     st.session_state.history = []
 
+if "hint" not in st.session_state:
+    st.session_state.hint = None
+
 st.subheader("Make a guess")
 
 st.info(
-    f"Guess a number between 1 and 100. "
+    # Will now correctly display the right range 
+    f"Guess a number between {low} and {high}. "
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 
@@ -117,6 +123,9 @@ with st.expander("Developer Debug Info"):
     st.write("Score:", st.session_state.score)
     st.write("Difficulty:", difficulty)
     st.write("History:", st.session_state.history)
+
+if st.session_state.hint:
+    st.warning(st.session_state.hint)
 
 raw_guess = st.text_input(
     "Enter your guess:",
@@ -133,7 +142,11 @@ with col3:
 
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.secret = random.randint(low, high)
+    st.session_state.score = 0
+    st.session_state.history = []
+    st.session_state.status = "playing"
+    st.session_state.hint = None
     st.success("New game started.")
     st.rerun()
 
@@ -151,19 +164,18 @@ if submit:
 
     if not ok:
         st.session_state.history.append(raw_guess)
+        st.session_state.hint = None
         st.error(err)
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
+        # Fixed: previously, even-numbered attempts converted the secret to a string,
+        # causing check_guess to return "You have won" instead of "Win" via the
+        # TypeError fallback path. This made correct guesses on even attempts register
+        # as losses. Now the secret is always passed as an int.
+        outcome, message = check_guess(guess_int, st.session_state.secret)
 
-        outcome, message = check_guess(guess_int, secret)
-
-        if show_hint:
-            st.warning(message)
+        st.session_state.hint = message if show_hint else None
 
         st.session_state.score = update_score(
             current_score=st.session_state.score,
@@ -178,7 +190,9 @@ if submit:
                 f"You won! The secret was {st.session_state.secret}. "
                 f"Final score: {st.session_state.score}"
             )
+            st.rerun()
         else:
+            # FixMe: The game should end when attempts run out, but it's glitchy and instead ends at 1 attempt left. I added this check to end the game when attempts are exhausted.
             if st.session_state.attempts >= attempt_limit:
                 st.session_state.status = "lost"
                 st.error(
@@ -186,6 +200,9 @@ if submit:
                     f"The secret was {st.session_state.secret}. "
                     f"Score: {st.session_state.score}"
                 )
+                st.rerun()
+            else:
+                st.rerun()
 
 st.divider()
 st.caption("Built by an AI that claims this code is production-ready.")

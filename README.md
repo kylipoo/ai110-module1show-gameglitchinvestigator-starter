@@ -43,9 +43,14 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
-- [ ] Too low too high range + start new game fix:
-- [ ] Attempts bug fix:
+- [X] [Insert a screenshot of your fixed, winning game here]
+- [X] Properly displays whether guess is too low or high, can toggle difficulty range, and can reset the game. 
+   -  ![GlitchInvestigator](https://github.com/user-attachments/assets/f0bbe2d6-63bb-485b-b06f-c6614e57833c)
+
+- [X] The game ends if all attempts are used up instead of stopping at 1 attempt.
+   -      ![AttemptsDecrement](https://github.com/user-attachments/assets/bdd04aad-569d-45b9-bb60-dd378dcf989e)
+
+
 
 ## 🚀 Stretch Features
 

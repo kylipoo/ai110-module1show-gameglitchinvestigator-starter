@@ -48,7 +48,8 @@ It wrote the code, ran away, and now the game is unplayable.
    -  ![GlitchInvestigator](https://github.com/user-attachments/assets/f0bbe2d6-63bb-485b-b06f-c6614e57833c)
 
 - [X] The game ends if all attempts are used up instead of stopping at 1 attempt.
-   -      ![AttemptsDecrement](https://github.com/user-attachments/assets/bdd04aad-569d-45b9-bb60-dd378dcf989e)
+   -  ![AttemptsDecrement](https://github.com/user-attachments/assets/1f06ce27-9b6f-46e7-8cde-478c484e0977)
+
 
 
 

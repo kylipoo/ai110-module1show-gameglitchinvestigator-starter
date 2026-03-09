@@ -198,7 +198,7 @@ if submit:
                 st.session_state.status = "lost"
                 st.error(
                     f"Out of attempts! "
-                    f"The secret was {st.session_state.secret}. "
+                    f"The secret number was {st.session_state.secret}. "
                     f"Final Score: {st.session_state.score}"
                 )
                 # Synchronizes the number of attempts with the displayed "Attempts left" info, so it shows 0 attempts left when the game ends.

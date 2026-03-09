@@ -148,7 +148,7 @@ if new_game:
     st.session_state.history = []
     st.session_state.status = "playing"
     st.session_state.hint = None
-    st.success("Starting New Game")
+    st.success("Starting a New Game")
     st.rerun()
 
 if st.session_state.status != "playing":
@@ -199,7 +199,7 @@ if submit:
                 st.error(
                     f"Out of attempts! "
                     f"The secret was {st.session_state.secret}. "
-                    f"Score: {st.session_state.score}"
+                    f"Final Score: {st.session_state.score}"
                 )
                 # Synchronizes the number of attempts with the displayed "Attempts left" info, so it shows 0 attempts left when the game ends.
                 st.rerun()

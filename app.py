@@ -141,13 +141,14 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
+    # Reset all game state variables to start a new game
     st.session_state.attempts = 0
     st.session_state.secret = random.randint(low, high)
     st.session_state.score = 0
     st.session_state.history = []
     st.session_state.status = "playing"
     st.session_state.hint = None
-    st.success("New game started.")
+    st.success("Starting New Game")
     st.rerun()
 
 if st.session_state.status != "playing":
@@ -200,8 +201,10 @@ if submit:
                     f"The secret was {st.session_state.secret}. "
                     f"Score: {st.session_state.score}"
                 )
+                # Synchronizes the number of attempts with the displayed "Attempts left" info, so it shows 0 attempts left when the game ends.
                 st.rerun()
             else:
+                # Synchronizes the number of attempts with the displayed "Attempts left" info, so it shows 0 attempts left when the game ends.
                 st.rerun()
 
 st.divider()

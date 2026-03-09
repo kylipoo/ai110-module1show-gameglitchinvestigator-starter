@@ -87,7 +87,7 @@ attempt_limit = attempt_limit_map[difficulty]
 
 low, high = get_range_for_difficulty(difficulty)
 
-st.sidebar.caption(f"Range: 1 to 100")
+st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
 if "secret" not in st.session_state:
@@ -141,7 +141,7 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
-    # Reset all game state variables to start a new game
+    # Reset all game state variables to start a new game. No longer need to reload page. 
     st.session_state.attempts = 0
     st.session_state.secret = random.randint(low, high)
     st.session_state.score = 0
@@ -201,10 +201,9 @@ if submit:
                     f"The secret number was {st.session_state.secret}. "
                     f"Final Score: {st.session_state.score}"
                 )
-                # Synchronizes the number of attempts with the displayed "Attempts left" info, so it shows 0 attempts left when the game ends.
+                # Used st.rerun() to immediately update the UI to reflect the game over state, instead of waiting for another user action.
                 st.rerun()
             else:
-                # Synchronizes the number of attempts with the displayed "Attempts left" info, so it shows 0 attempts left when the game ends.
                 st.rerun()
 
 st.divider()

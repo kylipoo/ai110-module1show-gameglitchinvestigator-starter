@@ -12,7 +12,10 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 - The first time I ran the game, I noticed that the secret number hints were backwards, the attempts counter was mismatched and I couldn't restart the game when I finished a round.
   - For the secret numbers issue, if I entered a number **lower** than the secret, it would give an error message saying "GO LOWER!" and if a number I entered was **higher** than the secret, the error message would say "GO HIGHER!"
+    - ![alt text](<Screenshot 2026-03-15 at 3.43.45 PM.jpg>)
+    - ![alt text](<Screenshot 2026-03-15 at 3.43.59 PM.jpg>)
   - When I went through the attempts to find the secret, I noticed that if I didn't get any of the attempts correct and I had 1 attempt left, the application would say "Out of attempts!" It should only trigger the message if I have 0 attempts left.
+    - ![alt text](<Screenshot 2026-03-15 at 3.43.59 PM-1.jpg>)
   - Even if I successfully got the secret number and it prompted me to try another round, if I clicked the "New game" button, the secret, history and score were not changed; I needed to reload the entire page.
 
 ## 2. How did you use AI as a teammate?

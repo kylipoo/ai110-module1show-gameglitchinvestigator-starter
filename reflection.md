@@ -27,12 +27,17 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ---
 
 - I used Claude, ChatGPT to assist me on the project. Claude would help to understand the logic of how the project runs (what files are needed), ChatGPT was used occasionally as a sort of second opinion to see if there were any differences from Claude's suggestions.
-- AI suggestions that were correct were the parts where I was trying to pinpoint areas that the code was bugged. What I would do is that I would note down the bugs I found, and then ask the AI tool where in the app.py file would I find the logic relating to features such as responding to an entered number. The following screenshot is one such example:
-  - ![alt text](<Screenshot 2026-03-15 at 2.32.44 PM.jpg>)
+- AI suggestions that were correct were the parts where I was trying to pinpoint areas that the code was bugged. What I would do is that I would note down the bugs I found, and then ask the AI tool where in the app.py file would I find the logic relating to features such as responding to an entered number. The following screenshot is one such example: -![alt text](<Screenshot 2026-03-15 at 3.53.58 PM.jpg>)
   - I didn't completely rely on AI to solve my problems for me. I would pinpoint where in app.py the bug was happening, and in this case, all I needed to do was swap the error messages.
 - An AI suggestion that was incorrect/misleading was when I was handling the "new game" button bug. I had left some comments marking a spot for Claude to fix, and it assumed it was just comments noting a bug. What I had to do was to explicitly enter it, but in the chat for Claude to implement meaningful changes.
   - ![alt text](<Screenshot 2026-03-15 at 3.06.39 PM.jpg>)
   - ![alt text](<Screenshot 2026-03-15 at 3.06.43 PM.jpg>)
+- Verification:
+  - - [x] Properly displays whether guess is too low or high, can start new game (and change difficulty).
+    - ![GlitchInvestigator](https://github.com/user-attachments/assets/f0bbe2d6-63bb-485b-b06f-c6614e57833c)
+
+  - [x] The game ends if all attempts are used up instead of stopping at 1 attempt.
+    - ![AttemptsDecrement](https://github.com/user-attachments/assets/1f06ce27-9b6f-46e7-8cde-478c484e0977)
 
 ## 3. Debugging and testing your fixes
 

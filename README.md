@@ -26,6 +26,7 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - [x] Describe the game's purpose.
+  - GameGlitch Investigatin Starter puts us in an RNG game where we are expected to guess a number in a certain number of attempts.
   - The game's purpose was to learn how to cooperate with AI rather than rely on it. The tool I used for this project was Claude.
   - To cooperate with Claude, I would conduct some tests on the game, doing observations on any bugs that I found, comparing it to what the game should actually do, listing it down and getting screenshots.
   - Then, I would consult the AI, giving the sceenshots and explaining my situation and narrowing down which file and which line the code was located.
@@ -43,15 +44,12 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📸 Demo
 
-- [X] [Insert a screenshot of your fixed, winning game here]
-- [X] Properly displays whether guess is too low or high, can toggle difficulty range, and can reset the game. 
-   -  ![GlitchInvestigator](https://github.com/user-attachments/assets/f0bbe2d6-63bb-485b-b06f-c6614e57833c)
+- [x] [Insert a screenshot of your fixed, winning game here]
+- [x] Properly displays whether guess is too low or high, can toggle difficulty range, and can reset the game.
+  - ![GlitchInvestigator](https://github.com/user-attachments/assets/f0bbe2d6-63bb-485b-b06f-c6614e57833c)
 
-- [X] The game ends if all attempts are used up instead of stopping at 1 attempt.
-   -  ![AttemptsDecrement](https://github.com/user-attachments/assets/1f06ce27-9b6f-46e7-8cde-478c484e0977)
-
-
-
+- [x] The game ends if all attempts are used up instead of stopping at 1 attempt.
+  - ![AttemptsDecrement](https://github.com/user-attachments/assets/1f06ce27-9b6f-46e7-8cde-478c484e0977)
 
 ## 🚀 Stretch Features
 
